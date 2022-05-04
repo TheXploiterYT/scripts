@@ -1,1 +1,1 @@
-loadstring(game:HttpGet('paste url here'))()
+loadstring(game:HttpGet('paste raw url here'))()
