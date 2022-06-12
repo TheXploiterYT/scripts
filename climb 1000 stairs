@@ -1,0 +1,84 @@
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=244024
+-- init
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
+local venyx = library.new("Climb 1000 stairs", 5013109572)
+
+-- themes
+local themes = {
+Background = Color3.fromRGB(24, 24, 24),
+Glow = Color3.fromRGB(0, 0, 0),
+Accent = Color3.fromRGB(10, 10, 10),
+LightContrast = Color3.fromRGB(20, 20, 20),
+DarkContrast = Color3.fromRGB(14, 14, 14),  
+TextColor = Color3.fromRGB(255, 255, 255)
+}
+
+local page = venyx:addPage("Main", 5012544693)
+local section1 = page:addSection("Utility")
+local section2 = page:addSection("Annoy")
+
+local page2 = venyx:addPage("Options", 5012544693)
+local section3 = page2:addSection("Settings")
+local section4 = page2:addSection("Credits")
+local section5 = page2:addSection("Discord")
+
+
+--autofarm
+autofarm = false
+section1:addToggle("Autofarm", nil, function(value)
+    autofarm = value
+end)
+spawn(function()
+    while wait() do
+        if autofarm then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(11.8490629196167, 4.951178073883057, 96.5259780883789)
+        tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(5, Enum.EasingStyle.Linear)
+        tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(1010.82568359375, 1003.4000244140625, 98.65310668945312)}):Play()
+        wait(5)
+        end
+    end
+end)
+--no rock
+norocks = false
+section1:addToggle("Remove Rocks", nil, function(value)
+    norocks = value
+end)
+spawn(function()
+    while wait() do
+        if norocks then
+            for i,v in pairs(workspace:GetChildren()) do
+                if v.Name == "Rock" then
+                    v:Destroy()
+                end
+            end
+        end
+    end
+end)
+--spam rocks
+spamrocks = false
+section2:addToggle("Spam Rocks", nil, function(value)
+    spamrocks = value
+end)
+spawn(function()
+    while wait() do
+        if spamrocks then
+            fireclickdetector(game:GetService("Workspace").RockFall.ClickBrick.ClickDetector)
+        end
+    end
+end)
+
+--toggle key
+section3:addKeybind("Toggle Keybind", Enum.KeyCode.RightControl, function()
+    venyx:toggle()
+end)
+section4:addButton("Made by TheXploiter", function()
+	setclipboard("https://youtube.com/TheXploiter")
+end)
+
+--discord
+section5:addButton("Copy Invite", function()
+	setclipboard("https://dsc.gg/thexploiter")
+end)
+
+-- load
+venyx:SelectPage(venyx.pages[1], true)
