@@ -1,5 +1,5 @@
---Made by : https://v3rmillion.net/member.php?action=profile&uid=244024
--- init
+--Made by TheXploiter
+
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/zxciaz/VenyxUI/main/Reuploaded"))() --someone reuploaded it so I put it in place of the original back up so guy can get free credit.
 local venyx = library.new("Climb 1000 stairs", 5013109572)
 
@@ -53,6 +53,10 @@ spawn(function()
             end
         end
     end
+end)
+--teleport to end
+section1:addButton("Teleport To End", function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1028.443603515625, 1006.3946533203125, 98.52604675292969)
 end)
 --spam rocks
 spamrocks = false
