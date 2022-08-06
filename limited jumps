@@ -1,0 +1,60 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "not your dad#3249", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+Tab:AddButton({
+	Name = "Give Jumps",
+	Callback = function()
+        local args = {
+            [1] = 90000,
+            [2] = true,
+            [3] = 2127883684
+        }
+        
+        game:GetService("ReplicatedStorage").RewardJumps:FireServer(unpack(args))
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Autofarm (bad)",
+	Callback = function()
+        while wait() do
+            spawn(function()
+        for i,v in pairs(game:GetService("Workspace").Map.RewardParts:GetDescendants()) do
+            if v:FindFirstChildWhichIsA("TouchTransmitter") then
+                firetouchinterest(v,game.Players.LocalPlayer.Character.HumanoidRootPart,0)
+                firetouchinterest(v,game.Players.LocalPlayer.Character.HumanoidRootPart,1)
+            end
+        end
+        end)
+        end
+  	end    
+})
+
+
+
+Tab:AddButton({
+	Name = "Player Stack Open All",
+	Callback = function()
+        while wait() do
+            for i,v in pairs(game:GetService("Workspace").Map.Buttons:GetDescendants()) do
+                if v:FindFirstChildWhichIsA("TouchTransmitter") then
+                    firetouchinterest(v,game.Players.LocalPlayer.Character.HumanoidRootPart,0)
+                    firetouchinterest(v,game.Players.LocalPlayer.Character.HumanoidRootPart,1)
+                end
+            end
+            end
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Rejoin",
+	Callback = function()
+        game:GetService("TeleportService"):Teleport(game.PlaceId)
+  	end    
+})
