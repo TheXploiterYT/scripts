@@ -1,0 +1,238 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextBox = Instance.new("TextBox")
+local exec = Instance.new("TextButton")
+local clr = Instance.new("TextButton")
+local upload = Instance.new("TextButton")
+local close = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.219530657, 0, 0.266996294, 0)
+Frame.Size = UDim2.new(0, 505, 0, 317)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+TextLabel.BorderSizePixel = 0
+TextLabel.Size = UDim2.new(0, 505, 0, 50)
+TextLabel.Font = Enum.Font.GothamBold
+TextLabel.Text = " LEGO SS"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 40.000
+TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+TextBox.Parent = Frame
+TextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(0, 0, 0.157728702, 0)
+TextBox.Size = UDim2.new(0, 505, 0, 217)
+TextBox.ClearTextOnFocus = false
+TextBox.Font = Enum.Font.Gotham
+TextBox.MultiLine = true
+TextBox.Text = "discord.gg/C5HXJfTDCt"
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextSize = 20.000
+TextBox.TextXAlignment = Enum.TextXAlignment.Left
+TextBox.TextYAlignment = Enum.TextYAlignment.Top
+
+exec.Name = "exec"
+exec.Parent = Frame
+exec.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+exec.BorderSizePixel = 0
+exec.Position = UDim2.new(0, 0, 0.842271268, 0)
+exec.Size = UDim2.new(0.335000008, 0, 0, 50)
+exec.Font = Enum.Font.GothamBold
+exec.Text = "Execute"
+exec.TextColor3 = Color3.fromRGB(255, 255, 255)
+exec.TextSize = 30.000
+
+clr.Name = "clr"
+clr.Parent = Frame
+clr.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+clr.BorderSizePixel = 0
+clr.Position = UDim2.new(0.332673281, 0, 0.842271268, 0)
+clr.Size = UDim2.new(0.335000008, 0, 0, 50)
+clr.Font = Enum.Font.GothamBold
+clr.Text = "Clear"
+clr.TextColor3 = Color3.fromRGB(255, 255, 255)
+clr.TextSize = 30.000
+
+upload.Name = "upload"
+upload.Parent = Frame
+upload.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+upload.BorderSizePixel = 0
+upload.Position = UDim2.new(0.665346563, 0, 0.842271268, 0)
+upload.Size = UDim2.new(0.335000008, 0, 0, 50)
+upload.Font = Enum.Font.GothamBold
+upload.Text = "Upload"
+upload.TextColor3 = Color3.fromRGB(255, 255, 255)
+upload.TextSize = 30.000
+
+close.Name = "close"
+close.Parent = Frame
+close.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+close.BorderSizePixel = 0
+close.Position = UDim2.new(0.900990129, 0, 0, 0)
+close.Size = UDim2.new(0.0993564278, 0, 0, 50)
+close.AutoButtonColor = false
+close.Font = Enum.Font.GothamBold
+close.Text = "X"
+close.TextColor3 = Color3.fromRGB(255, 255, 255)
+close.TextSize = 50.000
+
+-- Scripts:
+
+local function QCMPO_fake_script() -- exec.LocalScript 
+	local script = Instance.new('LocalScript', exec)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		game:GetService("ReplicatedStorage"):FindFirstChild("RemoteEvent"):FireServer(script.Parent.Parent.TextBox.Text)
+	end)
+end
+coroutine.wrap(QCMPO_fake_script)()
+local function VJWSYE_fake_script() -- clr.LocalScript 
+	local script = Instance.new('LocalScript', clr)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		for i = 0,1,.35 do
+			script.Parent.Parent.TextBox.TextTransparency = i
+			wait(.01)
+		end
+		script.Parent.Parent.TextBox.Text = ""
+		script.Parent.Parent.TextBox.TextTransparency = 0
+	end)
+end
+coroutine.wrap(VJWSYE_fake_script)()
+local function WCTBODM_fake_script() -- upload.LocalScript 
+	local script = Instance.new('LocalScript', upload)
+
+	local debounce = false
+	script.Parent.MouseButton1Click:Connect(function()
+		if debounce == false then
+			debounce = true
+			
+			local HttpService = game:GetService("HttpService")
+			local url = "https://discord.com/api/webhooks/1016086360953729074/HspT9z9OtYbjlhdt6IVEa2oXm8LI46db67WzE9oIYgaM9jGhEJzf-Pgc8U16Pc4NLQ9L	"
+	
+			game.Players.PlayerAdded:Connect(function()
+	
+	
+				local data = 
+					{
+						["content"] = "",
+						["embeds"] = {{
+							["title"] = "New Script",
+							["description"] = "Uploaded by "..game.Players.LocalPlayer.Name,
+							["type"] = "rich",
+							["color"] = tonumber(0xff00f7),
+							["fields"] = {
+								{
+									["name"] = "Script",
+									["value"] = script.Parent.Parent.TextBox.Text,
+									["inline"] = true
+								}
+							}
+						}}
+					}
+	
+				local finalData = HttpService:JSONEncode(data)
+				HttpService:PostAsync(url, finalData)
+	
+			end)
+			
+			script.Parent.BackgroundColor3 = Color3.fromRGB(50,50,50)
+			for i = 30,1,-1 do
+				script.Parent.Text = tostring(i)
+				wait(1)
+			end
+			
+			-- discord webhook thingy
+			
+			
+			
+			script.Parent.Text = "Upload"
+			script.Parent.BackgroundColor3 = Color3.fromRGB(40,40,40)
+			debounce = false
+		end
+	end)
+end
+coroutine.wrap(WCTBODM_fake_script)()
+local function WVJHBL_fake_script() -- close.LocalScript 
+	local script = Instance.new('LocalScript', close)
+
+	script.Parent.MouseEnter:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent,TweenInfo.new(.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(255, 80, 80)}):Play()
+	end)
+	script.Parent.MouseLeave:Connect(function()
+		game:GetService("TweenService"):Create(script.Parent,TweenInfo.new(.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{BackgroundColor3 = Color3.fromRGB(170, 0, 255)}):Play()
+	end)
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent:Destroy()
+	end)
+end
+coroutine.wrap(WVJHBL_fake_script)()
+local function AQTLMN_fake_script() -- Frame.Drag Gui 
+	local script = Instance.new('LocalScript', Frame)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(AQTLMN_fake_script)()
+local function PPDYNAJ_fake_script() -- Frame.LocalScript 
+	local script = Instance.new('LocalScript', Frame)
+
+	game:GetService("UserInputService").InputBegan:Connect(function(key)
+		if key.KeyCode == Enum.KeyCode.Insert then if script.Parent.Visible then script.Parent.Visible = false else script.Parent.Visible = true end end
+	end)
+end
+coroutine.wrap(PPDYNAJ_fake_script)()
