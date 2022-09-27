@@ -4,7 +4,7 @@ _G.active = false
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
 local ui = Material.Load({
-    Title = "Stalk V3 - not your dad#3249",
+    Title = "Stalk V3 - ryp#5687",
     Style = 3,
     SizeX = 400,
     SizeY = 250,
