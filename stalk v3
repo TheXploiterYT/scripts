@@ -42,11 +42,13 @@ local stop = main.Button({
 })
 
 game:GetService("RunService").Heartbeat:connect(function()
-    if _G.active then
-        for i,v in pairs(game.Players:GetChildren()) do
-            if string.find(v.Name:lower(),_G.user:lower()) then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[v.Name].Character.HumanoidRootPart.CFrame + game.Players[v.Name].Character.HumanoidRootPart.CFrame.LookVector * -3
+    pcall(function()
+        if _G.active then
+            for i,v in pairs(game.Players:GetChildren()) do
+                if string.find(v.Name:lower(),_G.user:lower()) then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[v.Name].Character.HumanoidRootPart.CFrame + game.Players[v.Name].Character.HumanoidRootPart.CFrame.LookVector * -3
+                end
             end
         end
-    end
+    end)
 end)
